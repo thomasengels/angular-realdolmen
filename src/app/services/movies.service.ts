@@ -39,4 +39,8 @@ export class MoviesService extends HttpService<Movie>{
     return this.http.post<Movie>(this.constant.MOVIES_API, data);
   }
 
+  deleteMovie(id: number): Observable<any> {
+    return this.delete(this.constant.MOVIES_API + '/' + id);
+  }
+
 }

@@ -1,5 +1,10 @@
+<form #searchForm="ngForm" (ngSubmit)="filter(searchForm.value)" novalidate>
+    <label>rating:</label>
+    <input #rating="ngModel" type="text" name="rating" ngModel [ngClass]="{'invalid': !searchForm.valid}" [required]="!year.value">
+    <label>year:</label>
+    <input #year="ngModel" type="text" name="year" [ngClass]="{'invalid': !searchForm.valid}" ngModel [required]="!rating.value">
+    <input type="submit" [disabled]="!searchForm.valid">
+</form>
 <ul class="collection">
-    <li class="collection-item avatar" *ngFor="let movie of movies$ | async; trackBy:trackByFn">
-        <a [routerLink]="['/movies', movie.id]"><img src="{{movie.poster}}" [alt]="movie.title" /> <span class="title">{{movie.title}}</span></a>
-    </li>
+    <app-movie-list-item *ngFor="let movie of movies; trackBy:trackByFn" [movie]="movie" (deleted)="deleteMovie($event)"></app-movie-list-item>
 </ul>

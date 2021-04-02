@@ -1,0 +1,4 @@
+<li class="collection-item avatar">
+    <a [routerLink]="['/movies', movie.id]"><img src="{{movie.poster}}" [alt]="movie.title" /> <span class="title">{{movie.title}}</span></a>
+    <button (click)="delete()">Delete</button>
+</li>

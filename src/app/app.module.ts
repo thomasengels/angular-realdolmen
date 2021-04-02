@@ -11,6 +11,7 @@ import { MoviesDetailComponent } from './components/movies-detail/movies-detail.
 import {Constant} from './services/constant';
 import { MoviesAddComponent } from './components/movies-add/movies-add.component';
 import {FormsModule} from '@angular/forms';
+import { MovieListItemComponent } from './components/movies-list/movie-list-item/movie-list-item.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     AppHeaderComponent,
     MoviesListComponent,
     MoviesDetailComponent,
-    MoviesAddComponent
+    MoviesAddComponent,
+    MovieListItemComponent
   ],
   imports: [
     BrowserModule,

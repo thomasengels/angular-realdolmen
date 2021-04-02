@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Movie} from '../../models/movie.model';
 import {MoviesService} from '../../services/movies.service';
 import {Observable} from 'rxjs';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-movies-list',
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./movies-list.component.css']
 })
 export class MoviesListComponent implements OnInit {
-  movies$: Observable<Movie[]>;
+  movies: Movie[];
 
   constructor(private moviesService: MoviesService) {
   }
@@ -19,6 +20,21 @@ export class MoviesListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movies$ = this.moviesService.getMovies();
+    this.moviesService.getMovies().subscribe(
+        movies => this.movies = movies
+    );
+  }
+
+  filter(searchValues: any){
+    this.moviesService.getMovies().subscribe(movies => {
+        this.movies = _.filter(movies, element => {
+          const yearNullOrEquals = !searchValues.year || element.year == searchValues.year;
+          return yearNullOrEquals;
+        });
+    });
+  }
+
+  deleteMovie(movieId: number) {
+     console.log(movieId);
   }
 }

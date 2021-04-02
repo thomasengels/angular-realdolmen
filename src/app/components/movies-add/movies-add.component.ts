@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MoviesService} from '../../services/movies.service';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -11,6 +11,8 @@ import {Movie} from '../../models/movie.model';
 })
 export class MoviesAddComponent implements OnInit {
   moviesSearch$: Observable<Movie[]>;
+
+  @ViewChild("searchForm") searchForm;
 
   constructor(private movieService: MoviesService, private router: Router) { }
 

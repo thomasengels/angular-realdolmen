@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Movie} from '../models/movie.model';
-import * as _ from 'underscore';
-import {Constant} from './constant';
-import {HttpService} from './http.service';
+import {Constant} from '../../services/constant';
+import {HttpService} from '../../services/http.service';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MoviesService extends HttpService<Movie>{
 
   constructor(private constant: Constant, public http: HttpClient) {

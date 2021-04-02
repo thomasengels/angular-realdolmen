@@ -1,0 +1,9 @@
+<form novalidate>
+     <input type="text" name="title" [formControl]="titleControl" [ngClass]="{'invalid': !titleControl.valid || titleControl.pristine || titleControl.untouched}">
+     <span *ngIf="titleControl.valid">Has errors</span>
+     <span class="error" *ngIf="titleControl.errors?.minlength">Actual characterlength: {{titleControl.errors.minlength.actualLength}}</span>
+</form>
+
+<li class="collection-item avatar" *ngFor="let movie of moviesSearch$ | async" (click)="addMovie(movie.onlineId)">
+     <img src="{{movie.poster}}" [alt]="movie.title" /> <span class="title">{{movie.title}}</span>
+</li>

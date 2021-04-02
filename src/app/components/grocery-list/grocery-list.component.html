@@ -1,0 +1,7 @@
+<form [formGroup]="groceryForm">
+    <div [formArrayName]="'groceryList'" *ngFor="let groceryItem of groceryListFormArray.controls; let i=index" class="padding">
+        <input [formControl]="getGroceryFormOnIndex(i).get('item')">
+        <input [formControl]="getGroceryFormOnIndex(i).get('amount')">
+    </div>
+    <button type="button" [disabled]="!groceryForm.valid" (click)="addNewGroceryItem()">Add new item</button>
+</form>

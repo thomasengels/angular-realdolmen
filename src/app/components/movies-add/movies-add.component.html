@@ -1,0 +1,8 @@
+<form #searchForm="ngForm" (ngSubmit)="search(searchForm.value)">
+     <input type="text" name="title" ngModel>
+     <input type="submit">Search>
+</form>
+
+<li class="collection-item avatar" *ngFor="let movie of moviesSearch$ | async" (click)="addMovie(movie.onlineId)">
+     <img src="{{movie.poster}}" [alt]="movie.title" /> <span class="title">{{movie.title}}</span>
+</li>
